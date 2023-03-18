@@ -29,7 +29,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
           "ssm:GetParameter"
         ],
         "Resource": [
-          ${aws_ssm_parameter.thumbnail_private_key.arn}
+          "${aws_ssm_parameter.thumbnail_private_key.arn}"
         ]
       },
       {
@@ -40,15 +40,6 @@ resource "aws_iam_role_policy" "lambda_policy" {
         "Resource": [
           "arn:aws:s3:::${var.bucket_name}",
           "arn:aws:s3:::${var.bucket_name}/*"
-        ]
-      },
-      {
-        "Effect": "Allow",
-        "Action": [
-          "dynamodb:GetItem"
-        ],
-        "Resource": [
-          "arn:aws:dynamodb:${var.region}:${var.account_id}:table/${var.datasets_table_name}"
         ]
       }
     ]
