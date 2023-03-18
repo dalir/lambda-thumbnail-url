@@ -25,9 +25,4 @@ variable "publish" {
   default = false
 }
 
-# Application Variables
-variable "aws_cloudfront_cache_duration_sec" {
-  default = 3600
-}
-
 variable "bucket_name" {}

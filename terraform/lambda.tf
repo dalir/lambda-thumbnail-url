@@ -21,7 +21,6 @@ resource "aws_lambda_function" "thumbnail-url" {
       AWS_CF_URL                = "https://${aws_cloudfront_distribution.bucket.domain_name}"
       AWS_CF_KEY_ID             = aws_cloudfront_public_key.thumbnail.id
       AWS_SSM_PARAM             = aws_ssm_parameter.thumbnail_private_key.name
-      AWS_CF_CACHE_DURATION_SEC = var.aws_cloudfront_cache_duration_sec
     }
   }
 }
