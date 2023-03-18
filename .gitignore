@@ -1,15 +1,16 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+#  Local .terraform directories
+**/.terraform/*
+**/deployment/*
 
-# Test binary, built with `go test -c`
-*.test
+# .tfstate files
+*.tfstate
+*.tfstate.*
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# ide specific files
+.idea/*
+.cache/*
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# env files
+.env
+
+main
