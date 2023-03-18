@@ -12,8 +12,8 @@ resource "aws_lambda_function" "thumbnail-url" {
   handler = "main"
   runtime = "go1.x"
   role = aws_iam_role.lambda_function_iam.arn
-  timeout = "900"
-  memory_size = 1024
+  timeout = "60"
+  memory_size = 128
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   environment {
     variables = {
