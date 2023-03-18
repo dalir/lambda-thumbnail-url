@@ -28,10 +28,10 @@ func (dataset *Dataset) getPrivateKey() (err error) {
 	if err != nil {
 		return
 	}
-	//stsSvc := sts.New(cfg)
-	//stsCredProvider := stscreds.NewAssumeRoleProvider(stsSvc, ctx.String("role-arn"))
+	// stsSvc := sts.NewFromConfig(cfg)
+	// stsCredProvider := stscreds.NewAssumeRoleProvider(stsSvc, "arn:aws:iam::942381384083:role/skyapi-v2-stage-terraform")
 
-	//cfg.Credentials = aws.CredentialsProvider(stsCredProvider)
+	// cfg.Credentials = aws.CredentialsProvider(stsCredProvider)
 
 	ssmClient := ssm.NewFromConfig(cfg)
 	param, err := ssmClient.GetParameter(context.TODO(), &ssm.GetParameterInput{
@@ -75,6 +75,7 @@ func init() {
 	ctxLog = log.WithFields(logrus.Fields{})
 }
 
+// func handleRequest(input Dataset) (output Dataset, err error) {
 func handleRequest(ctx context.Context, input Dataset) (output Dataset, err error) {
 	log.SetFormatter(&logrus.JSONFormatter{})
 	log.SetLevel(logrus.DebugLevel)
@@ -91,5 +92,14 @@ func handleRequest(ctx context.Context, input Dataset) (output Dataset, err erro
 }
 
 func main() {
+	/*
+		in := Dataset{
+			UUID:      "ba616f35-a1fd-4758-856e-f695f65d3057",
+			PhotoName: "1666193654000_c59106150ef7eb8a7e41e077611f5968_512.jpg",
+		}
+		handleRequest(in)
+
+	*/
 	lambda.Start(handleRequest)
+
 }
